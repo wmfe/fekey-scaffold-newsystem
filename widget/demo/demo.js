@@ -1,4 +1,4 @@
-var Toste  = require("demo:widget/ui/toste/toste.js");
+var Toste  = require("#{namespace}:widget/ui/toste/toste.js");
 
 module.exports = Widget.extend({
     init : function() {
