@@ -1,0 +1,227 @@
+@import (reference) "/static/css/layout-conf.less";
+
+.transition( @property, @duration: 0.2s ){
+    -webkit-transition: @property @duration;
+       -moz-transition: @property @duration;
+        -ms-transition: @property @duration;
+         -o-transition: @property @duration;
+            transition: @property @duration;
+}
+
+.sddp-nav-link-style(){
+    &:hover{
+        &.active{
+            a{
+                color:#fff;
+            }
+        }
+        i{
+            color: #6e7996;
+        }
+    }
+    &.active{
+        background-color: #1f1e2f;
+        i{
+            color:#fff;
+        }
+    }
+}
+
+.sddp-sp-main{
+  // 固定左边栏
+  &.fixed{
+      .sddp-sp-left{
+          position: fixed;
+          top:0;
+          #sddr-widget-sidebar {
+            .sddp-sp-nav{
+                .sddp-sp-nav-pannel{
+                    max-height: 100vh;
+                }
+            }
+          }
+      }
+
+      .sddp-sp-right{
+          margin-left: @sddp-sp-left-width;
+          position: relative;
+      }
+  }
+  //收起左边栏
+  &.fold{
+      .sddp-sp-left{
+          position: fixed;
+          left: -@sddp-sp-left-width;
+
+          .transition(left, @fold-animation-duration );
+          #sddp-widget-sidebar {
+            .sddp-sp-nav{
+
+                .draw-handler{
+                    background-color: @navHeaderColor;
+                    .toExp{
+                        display: block;
+                    }
+                    .toFold{
+                        display: none;
+                    }
+                }
+            }
+          }
+      }
+      .sddp-sp-right{
+          margin-left: 0;
+      }
+  }
+
+  @sddp-sp-left-width: 200px;
+  @fold-animation-duration:0.3s;
+  @drawHandle-animation-duration: 0.2s;
+  @draw-handler-heigth: 80px;
+  .sddp-sp-left {
+      background-color: #29293a;
+      -webkit-user-select: none;
+      width: @sddp-sp-left-width;
+      z-index: 3;
+      left:0;
+      cursor: default;
+      .transition(left, @fold-animation-duration );
+      // 导航+头部不应超过屏幕高度，因右侧内容高度有可能小于屏高，左侧超过屏高产生滚动条，
+      // 滚动fixed后，页面高度变小，滚动条消失，如此导致闪动，体验差
+      // height: calc( 100vh ~"-" @spHeaderHeight );//deprecated
+      height: 100vh;
+      #sddp-widget-sidebar {
+        #widget-common-sidebar{
+            width:@sddp-sp-left-width;
+            font-family:@nav-fontFamily;
+            .sddp-sp-division {
+              margin: 4px 0;
+            }
+        }
+        .glyphicon{
+            font-family: 'Glyphicons Halflings'!important;
+            width: 15px;
+            height: 15px;
+            position: relative;
+        }
+        .sddp-sp-title {
+            color: #ccc;
+            padding: 15px 0 15px 20px;
+            font-size: 14px;
+            font-family: inherit;
+            letter-spacing: 1px;
+            &:first-child{
+                .sddp-nav-link-style();
+            }
+            &.sddp-sp-platform {
+              padding: 5px 0px;
+              text-align: center;
+              font-size: 16px;
+              color: #fff;
+              a {
+                color: #fff;
+              }
+            }
+            .glyphicon-user-image {
+              background: url(/static/images/user_image.png);
+            }
+        }
+        ul{
+            font-family: inherit;
+            font-size: @nav-item-fontsize;
+            margin: 0;
+            padding-left: 0;
+            li {
+                line-height: 50px;
+                height: 50px;
+                letter-spacing: initial;
+            }
+        }
+        .sddp-url {
+            .transition(background-color);
+            a{
+              margin-left: 47px;
+            }
+            .sddp-nav-link-style();
+        }
+        a.sddp-nav-link{
+            color: #46c3c1;
+            display: inline-block;
+            &:hover,&:link,&:active{
+                text-decoration:none;
+            }
+            &:hover{
+                color: #fff;
+            }
+        }
+        a.sddp-nav-link[data-node=index]{
+            display: inline-block;
+            padding-left: 0;
+            width: 120px;
+        }
+
+        .sddp-sp-nav{
+            position: relative;
+
+            .sddp-sp-nav-pannel{
+                padding: 0 0 15px 0;
+                overflow: hidden;
+                max-height: calc( 100vh ~"-" @spHeaderHeight );
+                &:hover{
+                    overflow-y: auto;
+                }
+            }
+            .draw-handler{
+                width:15px;
+                height:@draw-handler-heigth;
+                background-color: #828B9B;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+                position:absolute;
+                top: calc( 50vh ~"-" @draw-handler-heigth / 2 );
+                left: @sddp-sp-left-width;
+                color: #fff;
+                opacity: 0.5;
+                cursor:pointer;
+                z-index: 1;
+                .transition(opacity , @drawHandle-animation-duration );
+
+                &:hover{
+                    width:34px;
+                    opacity:1;
+                    a{
+                        display: inline-block;
+                    }
+                }
+                i{
+                    float: left;
+                    top: 32px;
+                }
+                a{
+                    color:#fff;
+                    display:none;
+                    -webkit-writing-mode: vertical-lr;
+                    width: 12px;
+                    position: relative;
+                    top: 12px;
+                    left: 0px;
+                    font-family: @nav-fontFamily;
+                    font-size: 12px;
+                    letter-spacing: 0.2em;
+                    &:hover{
+                        color:#fff;
+                        text-decoration:none;
+                    }
+                }
+                .toExp{
+                    display: none;
+                }
+                .toFold{
+                    display: block;
+                }
+            }
+          }
+      }
+  }
+
+}
