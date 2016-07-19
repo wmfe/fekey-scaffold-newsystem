@@ -4,7 +4,7 @@
     update:
  */
 fis.require('smarty')(fis);
-fis.set('namespace', #{namespace});
+fis.set('namespace', '#{namespace}');
 
 var mactivityDeployRules = {
     '*': {
