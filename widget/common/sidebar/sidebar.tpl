@@ -1,24 +1,24 @@
-<div id="sddp-widget-sidebar">
-    <div class="sddp-sp-nav">
-        <div class="sddp-sp-nav-pannel">
+<div id="#{namespace}-widget-sidebar">
+    <div class="#{namespace}-sp-nav">
+        <div class="#{namespace}-sp-nav-pannel">
             <div id="widget-common-sidebar">
-                <div class="sddp-sp-title sddp-sp-platform">
+                <div class="#{namespace}-sp-title #{namespace}-sp-platform">
                     <i class="glyphicon glyphicon-logo"></i>新系统demo
                 </div>
-                <div class="sddp-sp-division"></div>
+                <div class="#{namespace}-sp-division"></div>
                 <div>
-                    <div class="sddp-sp-title">
+                    <div class="#{namespace}-sp-title">
                         <i class="glyphicon glyphicon-user-image"></i>搜索数据
                     </div>
                     <ul class="unstyled">
-                        <li class="sddp-url {%if $selected == "demo"%}active{%/if%}">
-                            <a class="sddp-nav-link" href="/platform/searchdata/summary">数据demo</a>
+                        <li class="#{namespace}-url {%if $selected == "demo"%}active{%/if%}">
+                            <a class="#{namespace}-nav-link" href="/platform/searchdata/summary">数据demo</a>
                         </li>
-                        <li class="sddp-url {%if $selected == "querydata"%}active{%/if%}">
-                            <a class="sddp-nav-link" href="/platform/searchdata/querydata">query数据</a>
+                        <li class="#{namespace}-url {%if $selected == "querydata"%}active{%/if%}">
+                            <a class="#{namespace}-nav-link" href="/platform/searchdata/querydata">query数据</a>
                         </li>
-                        <li class="sddp-url {%if $selected == "moduledata"%}active{%/if%}">
-                            <a class="sddp-nav-link" href="/platform/searchdata/moduledata">模块数据</a>
+                        <li class="#{namespace}-url {%if $selected == "moduledata"%}active{%/if%}">
+                            <a class="#{namespace}-nav-link" href="/platform/searchdata/moduledata">模块数据</a>
                         </li>
                     </ul>
                 </div>

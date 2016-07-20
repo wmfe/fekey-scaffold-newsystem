@@ -1,4 +1,4 @@
-<div id="sddp-widget-demo">
+<div id="#{namespace}-widget-demo">
     <div class="page-loading">
         <div data-node="loading" class="loading"></div>
     </div>

@@ -2,17 +2,17 @@
  * @file 左侧导航条
  * 
  */
-var utils = require('sddp:static/js/utils/utils.js');
-var Cookie = require('sddp:static/js/utils/cookie.js');
+var utils = require('#{namespace}:static/js/utils/utils.js');
+var Cookie = require('#{namespace}:static/js/utils/cookie.js');
 // 页面链接特征，用于高亮导航选项
 // var NavLinkFeatrue = require('nav_feature_config.js');
 // 貌似废弃了, edit by peng 0328
 
 var SidebarMask = {
-    elem: $('.sddp-sp-body .bottom-mask'),
-    elemHeight: $('.sddp-sp-body .bottom-mask').height(),
+    elem: $('.#{namespace}-sp-body .bottom-mask'),
+    elemHeight: $('.#{namespace}-sp-body .bottom-mask').height(),
     contentHeight: $('#widget-common-sidebar').height(),
-    container: $('.sddp-sp-body .sddp-sp-nav-pannel'),
+    container: $('.#{namespace}-sp-body .#{namespace}-sp-nav-pannel'),
     setShowStatus: function () {
         if (this.contentHeight - this.container.scrollTop() - this.elemHeight > this.container.height()) {
             this.elem.show();
@@ -24,7 +24,7 @@ var SidebarMask = {
 };
 
 module.exports = Widget.extend({
-    el: '.sddp-sp-body',
+    el: '.#{namespace}-sp-body',
     init: function (data) {
         this.data = data;
         window.injectedData = data;
@@ -43,12 +43,12 @@ module.exports = Widget.extend({
     },
     initElem: function () {
         this.header = this.$el.find('.sp-header');
-        this.main = this.$el.find('.sddp-sp-main');
-        this.left = this.$el.find('.sddp-sp-left');
-        this.right = this.$el.find('.sddp-sp-right');
+        this.main = this.$el.find('.#{namespace}-sp-main');
+        this.left = this.$el.find('.#{namespace}-sp-left');
+        this.right = this.$el.find('.#{namespace}-sp-right');
         this.footer = this.$el.find('.sp-footer');
         this.mask = this.$el.find('.bottom-mask');
-        this.scrollElem = this.left.find('.sddp-sp-nav-pannel');
+        this.scrollElem = this.left.find('.#{namespace}-sp-nav-pannel');
     },
     initLeftbarStyle: function () {
         // 恢复滚动位置

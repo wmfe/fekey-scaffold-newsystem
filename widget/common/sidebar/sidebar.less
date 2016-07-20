@@ -8,7 +8,7 @@
             transition: @property @duration;
 }
 
-.sddp-nav-link-style(){
+.#{namespace}-nav-link-style(){
     &:hover{
         &.active{
             a{
@@ -27,35 +27,35 @@
     }
 }
 
-.sddp-sp-main{
+.#{namespace}-sp-main{
   // 固定左边栏
   &.fixed{
-      .sddp-sp-left{
+      .#{namespace}-sp-left{
           position: fixed;
           top:0;
           #sddr-widget-sidebar {
-            .sddp-sp-nav{
-                .sddp-sp-nav-pannel{
+            .#{namespace}-sp-nav{
+                .#{namespace}-sp-nav-pannel{
                     max-height: 100vh;
                 }
             }
           }
       }
 
-      .sddp-sp-right{
-          margin-left: @sddp-sp-left-width;
+      .#{namespace}-sp-right{
+          margin-left: @#{namespace}-sp-left-width;
           position: relative;
       }
   }
   //收起左边栏
   &.fold{
-      .sddp-sp-left{
+      .#{namespace}-sp-left{
           position: fixed;
-          left: -@sddp-sp-left-width;
+          left: -@#{namespace}-sp-left-width;
 
           .transition(left, @fold-animation-duration );
-          #sddp-widget-sidebar {
-            .sddp-sp-nav{
+          ##{namespace}-widget-sidebar {
+            .#{namespace}-sp-nav{
 
                 .draw-handler{
                     background-color: @navHeaderColor;
@@ -69,19 +69,19 @@
             }
           }
       }
-      .sddp-sp-right{
+      .#{namespace}-sp-right{
           margin-left: 0;
       }
   }
 
-  @sddp-sp-left-width: 200px;
+  @#{namespace}-sp-left-width: 200px;
   @fold-animation-duration:0.3s;
   @drawHandle-animation-duration: 0.2s;
   @draw-handler-heigth: 80px;
-  .sddp-sp-left {
+  .#{namespace}-sp-left {
       background-color: #29293a;
       -webkit-user-select: none;
-      width: @sddp-sp-left-width;
+      width: @#{namespace}-sp-left-width;
       z-index: 3;
       left:0;
       cursor: default;
@@ -90,11 +90,11 @@
       // 滚动fixed后，页面高度变小，滚动条消失，如此导致闪动，体验差
       // height: calc( 100vh ~"-" @spHeaderHeight );//deprecated
       height: 100vh;
-      #sddp-widget-sidebar {
+      ##{namespace}-widget-sidebar {
         #widget-common-sidebar{
-            width:@sddp-sp-left-width;
+            width:@#{namespace}-sp-left-width;
             font-family:@nav-fontFamily;
-            .sddp-sp-division {
+            .#{namespace}-sp-division {
               margin: 4px 0;
             }
         }
@@ -104,16 +104,16 @@
             height: 15px;
             position: relative;
         }
-        .sddp-sp-title {
+        .#{namespace}-sp-title {
             color: #ccc;
             padding: 15px 0 15px 20px;
             font-size: 14px;
             font-family: inherit;
             letter-spacing: 1px;
             &:first-child{
-                .sddp-nav-link-style();
+                .#{namespace}-nav-link-style();
             }
-            &.sddp-sp-platform {
+            &.#{namespace}-sp-platform {
               padding: 5px 0px;
               text-align: center;
               font-size: 16px;
@@ -137,14 +137,14 @@
                 letter-spacing: initial;
             }
         }
-        .sddp-url {
+        .#{namespace}-url {
             .transition(background-color);
             a{
               margin-left: 47px;
             }
-            .sddp-nav-link-style();
+            .#{namespace}-nav-link-style();
         }
-        a.sddp-nav-link{
+        a.#{namespace}-nav-link{
             color: #46c3c1;
             display: inline-block;
             &:hover,&:link,&:active{
@@ -154,16 +154,16 @@
                 color: #fff;
             }
         }
-        a.sddp-nav-link[data-node=index]{
+        a.#{namespace}-nav-link[data-node=index]{
             display: inline-block;
             padding-left: 0;
             width: 120px;
         }
 
-        .sddp-sp-nav{
+        .#{namespace}-sp-nav{
             position: relative;
 
-            .sddp-sp-nav-pannel{
+            .#{namespace}-sp-nav-pannel{
                 padding: 0 0 15px 0;
                 overflow: hidden;
                 max-height: calc( 100vh ~"-" @spHeaderHeight );
@@ -179,7 +179,7 @@
                 border-bottom-right-radius: 4px;
                 position:absolute;
                 top: calc( 50vh ~"-" @draw-handler-heigth / 2 );
-                left: @sddp-sp-left-width;
+                left: @#{namespace}-sp-left-width;
                 color: #fff;
                 opacity: 0.5;
                 cursor:pointer;
